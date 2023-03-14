@@ -10,6 +10,17 @@
 // RISC-V subtarget features and instruction predicates.
 //===----------------------------------------------------------------------===//
 
+
+/////////////////////////////// MY EDIT //////////////////////////////////////////////////////////////////////////////////////////////////////////
+def FeatureZbb_10x
+    : SubtargetFeature<"zbb_10x", "HasZbb_10x", "true",
+                       "'Zbb_10x' (10X - BitwiseExtension Demo)">;
+
+def HasZbb_10x : Predicate<"Subtarget->hasZbb_10x()">,
+                           AssemblerPredicate<(all_of FeatureZbb_10x),
+                           "'Zbb_10x' (10X - BitwiseExtension Demo)">;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 def FeatureStdExtM
     : SubtargetFeature<"m", "HasStdExtM", "true",
                        "'M' (Integer Multiplication and Division)">;

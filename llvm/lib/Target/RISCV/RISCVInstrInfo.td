@@ -1871,3 +1871,6 @@ include "RISCVInstrInfoZicbo.td"
 
 include "RISCVInstrInfoXVentana.td"
 include "RISCVInstrInfoXTHead.td"
+
+///////////////////////////////////////////// MY EDIT /////////////////////////////////////////////////////////
+include "RISCVInstrInfoZbb_10x.td"
