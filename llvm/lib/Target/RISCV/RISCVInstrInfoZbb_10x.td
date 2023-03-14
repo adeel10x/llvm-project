@@ -10,7 +10,7 @@ let Size = 4;
 let hasSideEffects = 0;
 let mayLoad = 0;
 let mayStore = 0;
-let Inst{31-25} = 0b0100000; /*funct7*/  // Avoiding Encoding Conflict 
+let Inst{31-25} = 0b0100000; /*funct7*/  
 let Inst{24-20} = rs2;
 let Inst{19-15} = rs1;
 let Inst{14-12} = 0b111; /*funct3*/
@@ -21,6 +21,6 @@ dag InOperandList = (ins GPR:$rs1, GPR:$rs2);
 let AsmString = "andn_10x\t$rd, $rs1, $rs2";
 }
 
-def : Pat<(and GPR:$rs1, (not GPR:$rs2)), (ANDN_10x GPR:$rs1, GPR:$rs2)>;
+def : Pat<(and GPR:$rs1, (xor GPR:$rs2, (i64 -1))), (ANDN_10x GPR:$rs1, GPR:$rs2)>;
 
 }
