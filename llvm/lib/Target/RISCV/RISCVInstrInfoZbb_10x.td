@@ -1,4 +1,4 @@
-let Predicates = [HasZbb_10x] in {
+//let Predicates = [HasZbb_10x] in {
 //=============================================== ANDN ====================================//
 
 def ANDN_10x : Instruction {
@@ -20,7 +20,7 @@ let Inst{11-7} = rd;
 let Inst{6-0} = 0b0110011; /*opcode*/
 dag OutOperandList = (outs GPR:$rd);
 dag InOperandList = (ins GPR:$rs1, GPR:$rs2);
-let AsmString = "andn_10x\t$rd, $rs1, $rs2";
+let AsmString = "andn\t$rd, $rs1, $rs2";
 }
 
 def : Pat<(and GPR:$rs1, (xor GPR:$rs2, (i64 -1))), (ANDN_10x GPR:$rs1, GPR:$rs2)>;
@@ -48,7 +48,7 @@ let Inst{11-7} = rd;
 let Inst{6-0} = 0b0110011; /*opcode*/
 dag OutOperandList = (outs GPR:$rd);
 dag InOperandList = (ins GPR:$rs1, GPR:$rs2);
-let AsmString = "orn_10x\t$rd, $rs1, $rs2";
+let AsmString = "orn\t$rd, $rs1, $rs2";
 }
 
 def : Pat<(or GPR:$rs1, (xor GPR:$rs2, (i64 -1))), (ORN_10x GPR:$rs1, GPR:$rs2)>;
@@ -75,8 +75,8 @@ let Inst{11-7} = rd;
 let Inst{6-0} = 0b0110011; /*opcode*/
 dag OutOperandList = (outs GPR:$rd);
 dag InOperandList = (ins GPR:$rs1, GPR:$rs2);
-let AsmString = "xnor_10x\t$rd, $rs1, $rs2";
+let AsmString = "xnor\t$rd, $rs1, $rs2";
 }
 def : Pat<(xor (xor GPR:$rs1, GPR:$rs2), (i64 -1)), (XNOR_10x GPR:$rs1, GPR:$rs2)>;
 
-}
+//}
